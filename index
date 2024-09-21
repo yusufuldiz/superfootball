@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sports Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://footballnation.eu/ranking.min.js" async></script>
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #054D57;
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #054D57;
+        }
+
+        .logo img {
+            height: 50px;
+            margin: 10px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #C2CDD5;
+            color: #054D57;
+            border-radius: 4%;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .content {
+            flex: 3;
+            margin-right: 20px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .aside {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post {
+            margin-bottom: 20px;
+        }
+
+        .post img {
+            width: 100%;
+            height: auto;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #E7203C;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            background-color: #a7182b;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .pagination a {
+            margin: 0 10px;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #0073e6;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover {
+            background-color: #005bb5;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo"><img src="headerlogo.png" alt="Sports Blog Logo" style="height: 60px; width: 200px;"></a>
+            <nav>
+                <a href="#">News</a>
+                <a href="#">About</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content" id="posts-container">
+            <!-- Blog posts will be dynamically inserted here -->
+        </div>
+
+        <aside class="aside">
+            <a href="https://footballnation.eu/" data-league="super-lig" data-lang="en" data-style="light">Football Nation</a>
+            <h2>Recent Posts</h2>
+            <ul>
+                <li><a href="top-10-football-players.html">Top 10 Football Players of 2024</a></li>
+                <li><a href="latest-basketball-highlights.html">Latest Basketball Highlights</a></li>
+                <li><a href="best-tennis-matches.html">Best Tennis Matches of the Year</a></li>
+                <li><a href="impact-of-technology-on-sports.html">The Impact of Technology on Modern Sports</a></li>
+            </ul>
+
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">Football</a></li>
+                <li><a href="#">Basketball</a></li>
+                <li><a href="#">Tennis</a></li>
+                <li><a href="#">Technology</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <div class="pagination" id="pagination">
+        <!-- Pagination links will be dynamically inserted here -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sports Blog. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const postsPerPage = 10;
+        let currentPage = 1;
+        const posts = [
+            {
+                title: "Top 10 Football Players of 2024",
+                img: "https://via.placeholder.com/800x400",
+                link: "post.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Latest Basketball Highlights",
+                img: "https://via.placeholder.com/800x400",
+                link: "latest-basketball-highlights.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Best Tennis Matches of the Year",
+                img: "https://via.placeholder.com/800x400",
+                link: "best-tennis-matches.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "The Impact of Technology on Modern Sports",
+                img: "https://via.placeholder.com/800x400",
+                link: "impact-of-technology-on-sports.html",
+                description: "Technology has revolutionized the world of sports..."
+            },
+            {
+                title: "Top 10 Football Players of 2024",
+                img: "https://via.placeholder.com/800x400",
+                link: "top-10-football-players.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Latest Basketball Highlights",
+                img: "https://via.placeholder.com/800x400",
+                link: "latest-basketball-highlights.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Best Tennis Matches of the Year",
+                img: "https://via.placeholder.com/800x400",
+                link: "best-tennis-matches.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "The Impact of Technology on Modern Sports",
+                img: "https://via.placeholder.com/800x400",
+                link: "impact-of-technology-on-sports.html",
+                description: "Technology has revolutionized the world of sports..."
+            },
+            {
+                title: "Top 10 Football Players of 2024",
+                img: "https://via.placeholder.com/800x400",
+                link: "top-10-football-players.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Latest Basketball Highlights",
+                img: "https://via.placeholder.com/800x400",
+                link: "latest-basketball-highlights.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Best Tennis Matches of the Year",
+                img: "https://via.placeholder.com/800x400",
+                link: "best-tennis-matches.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "The Impact of Technology on Modern Sports",
+                img: "https://via.placeholder.com/800x400",
+                link: "impact-of-technology-on-sports.html",
+                description: "Technology has revolutionized the world of sports..."
+            },
+            {
+                title: "Top 10 Football Players of 2024",
+                img: "https://via.placeholder.com/800x400",
+                link: "top-10-football-players.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Latest Basketball Highlights",
+                img: "https://via.placeholder.com/800x400",
+                link: "latest-basketball-highlights.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "Best Tennis Matches of the Year",
+                img: "https://via.placeholder.com/800x400",
+                link: "best-tennis-matches.html",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+            },
+            {
+                title: "The Impact of Technology on Modern Sports",
+                img: "https://via.placeholder.com/800x400",
+                link: "impact-of-technology-on-sports.html",
+                description: "Technology has revolutionized the world of sports..."
+            },
+            // Add more posts here to test pagination
+        ];
+
+        function renderPosts() {
+            const start = (currentPage - 1) * postsPerPage;
+            const end = start + postsPerPage;
+            const postsToShow = posts.slice(start, end);
+
+            const postsContainer = document.getElementById('posts-container');
+            postsContainer.innerHTML = '';
+
+            postsToShow.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <h2><a href="${post.link}">${post.title}</a></h2>
+                    <img src="${post.img}" alt="${post.title}">
+                    <p>${post.description}</p>
+                    <a href="${post.link}" class="read-more">Read More</a>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';
+
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.innerText = i;
+        pageLink.className = i === currentPage ? 'active' : '';
+        pageLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = i;
+            renderPosts();
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scrolls back to top
+        });
+        paginationContainer.appendChild(pageLink);
+    }
+}
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPosts();
+        });
+    </script>
+</body>
+</html>
